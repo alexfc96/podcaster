@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import Header from './components/Header/Header'
 
 function App() {
   const [podcasts, setPodcasts] = useState([])
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <>
-      <h1>Podcaster</h1>
+      <Header />
     </>
   )
 }

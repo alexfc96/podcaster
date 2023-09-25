@@ -1,0 +1,17 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.title {
+    color: blue;
+    font-size: 6px;
+}
