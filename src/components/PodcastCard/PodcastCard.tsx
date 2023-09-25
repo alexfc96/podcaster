@@ -1,20 +1,40 @@
-import { Card, CardContent, Typography } from '@mui/material';
+import { Avatar, Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
 import { Podcast } from '../../types';
+import './PodcastCard.css';
 
 interface Props {
-    podcast: Podcast
+  podcast: Podcast
 }
 
 const PodcastCard = ({ podcast }: Props) => {
   return (
-    <Card>
-      <img src={podcast['im:image'][1].label} alt="Podcast" className="card-image" />
-      <CardContent>
+    <Card className="card">
+      <CardHeader
+        avatar={
+          <Avatar
+            alt="Podcast"
+            src={podcast['im:image'][0].label}
+            sx={{
+              width: 100,
+              height: 100,
+              margin: '0 auto',
+            }}
+          />
+        }
+      />
+      <div className="media-container">
+        <CardMedia
+          className="media"
+          image={podcast['im:image'][0].label}
+          title="Podcast"
+        />
+      </div>
+      <CardContent className="content">
         <Typography variant="h5" component="div">
-          {podcast.title.label}
+          {podcast['im:name'].label}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          By {podcast['im:artist'].label}
+          Author: {podcast['im:artist'].label}
         </Typography>
       </CardContent>
     </Card>

@@ -1,0 +1,31 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.header {
+    background-color: #1976d2;
+    color: white; 
+    border-radius: 8px 8px 0 0;
+    text-align: left;
+}
+
+.avatar-container {
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.avatar {
+    width: 100%;
+    height: auto;
+}
+  

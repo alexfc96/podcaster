@@ -21,11 +21,13 @@ function App() {
   return (
     <>
       <Header />
-      {podcasts &&
-        podcasts.map((podcast: Podcast) => (
-          <PodcastCard podcast={podcast} key={podcast.id.attributes['im:id']} />
-        ))
-      }
+      <div className="card-container">
+        {podcasts &&
+          podcasts.map((podcast: Podcast) => (
+            <PodcastCard podcast={podcast} key={podcast.id.attributes['im:id']} />
+            ))
+        }
+      </div>
     </>
   )
 }

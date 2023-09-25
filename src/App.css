@@ -27,6 +27,12 @@
   }
 }
 
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four podcasts per row */
+  gap: 16px; /* Space between cards */
+}
+
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
