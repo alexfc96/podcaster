@@ -2,7 +2,7 @@ export interface Icon {
     label: string;
 }
 
-export interface Entry {
+export interface Podcast {
     "im:name":        Icon;
     "im:image":       IMImage[];
     summary:          Icon;
