@@ -15,13 +15,14 @@ const PodcastDetails = () => {
     fetch(`https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`)
       .then(async response => await response.json())
       .then(res => {
-        console.log(res.results);
         setPodcast(res.results);
       })
       .catch(error => {
         console.log(error)
       })
   }, [])
+
+  console.log("po", podcast)
 
   return (
     <div className="podcast-details">
@@ -52,10 +53,10 @@ const PodcastDetails = () => {
           </CardContent>
         </Card>
       )}
-      {podcast && (
+      {podcast.length > 0 && (
         <div className="episode-count">
           <Typography variant="h5" color="text.secondary">
-            Episodes: {podcast[0].trackCount}
+            Episodes: {podcast[0].trackCount }
           </Typography>
         </div> 
       )}

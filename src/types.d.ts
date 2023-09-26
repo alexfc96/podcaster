@@ -152,5 +152,6 @@ interface PodcastDetail {
     episodeGuid: string;
     kind: string;
     wrapperType: string;
+    trackCount?: number;
 }
   
