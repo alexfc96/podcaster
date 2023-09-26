@@ -1,9 +1,6 @@
 .header-title {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    padding: 20px;
+    align-self: flex-start;
+    margin-bottom: 4vh;
 }
 
 .link {

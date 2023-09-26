@@ -10,7 +10,7 @@ const PodcastCardDetail = ({ podcastInfo }: Props) => {
   return (
     <div className="podcast-details">
       {podcastInfo && (
-        <Card className="detail-card">
+        <Card  className={`detail-card fixed-card'}`}>
           <CardMedia
             component="img"
             alt="Podcast"

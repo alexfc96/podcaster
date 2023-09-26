@@ -1,12 +1,13 @@
 .episode-details {
+    width: 95%;
+    height: fit-content;
     display: flex;
-    justify-content: flex-start;
-    margin-top: 6vh;
-    width: 100%;
 }
 
 .episode-description-card {
     font-weight: bold;
+    max-width: 55%;
+    min-width: 55%;
     width: 100%;
     text-align: left;
     display: flex;
