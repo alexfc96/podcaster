@@ -11,11 +11,17 @@ const PodcastList = () => {
 
   const filteredPodcasts = useMemo(() => {
     return filterPodcast != null && filterPodcast.length > 0
-    ? podcasts.filter(podcast => {
-        return podcast['im:name'].label.toLocaleLowerCase().includes(filterPodcast.toLocaleLowerCase())
-      })
-    : podcasts
-  }, [podcasts, filterPodcast]) 
+      ? podcasts.filter((podcast: Podcast) => {
+          const titleMatch = podcast['im:name'].label
+            .toLocaleLowerCase()
+            .includes(filterPodcast.toLocaleLowerCase());
+          const artistMatch = podcast['im:artist'].label
+            .toLocaleLowerCase()
+            .includes(filterPodcast.toLocaleLowerCase());
+          return titleMatch || artistMatch;
+        })
+      : podcasts;
+  }, [podcasts, filterPodcast]);
 
   useEffect(() =>{
     fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
