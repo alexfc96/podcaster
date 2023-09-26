@@ -1,12 +1,13 @@
 import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
-import { PodcastDetail } from "../../types";
+import { Podcast, PodcastDetail } from "../../types";
 import { Link } from "react-router-dom";
 
 interface Props {
   episodes: PodcastDetail[];
+  podcastInfo: Podcast;
 }
 
-const EpisodesTable = ({ episodes }: Props) => {
+const EpisodesTable = ({ episodes, podcastInfo }: Props) => {
     function formatDate(originalDate: string) {
         const date = new Date(originalDate);
         const day = date.getDate().toString().padStart(2, "0");
@@ -44,7 +45,7 @@ const EpisodesTable = ({ episodes }: Props) => {
                 return (
                     <TableRow key={episode.trackId} style={{ backgroundColor: backgroundColor }}>  
                         <TableCell style={{ padding: 8, maxWidth: 300 }}>
-                            <Link to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`} state={{ episode }} style={{ color: 'blue' }}>
+                            <Link to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`} state={{ episode, podcastInfo }} style={{ color: 'blue' }}>
                                 {episode.trackName}
                             </Link>
                         </TableCell>

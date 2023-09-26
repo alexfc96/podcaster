@@ -51,7 +51,7 @@ const PodcastDetails = () => {
               p: 1,
             }}
           >
-            <EpisodesTable episodes={podcast.slice(1)} />
+            <EpisodesTable episodes={podcast.slice(1)} podcastInfo={podcastInfo} />
           </Box>
         </div> 
       )}

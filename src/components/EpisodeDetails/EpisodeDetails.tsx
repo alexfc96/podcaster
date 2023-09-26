@@ -5,15 +5,16 @@ import PodcastCardDetail from '../PodcastCardDetail/PodcastCardDetail';
 const EpisodeDetails = () => {
   const location = useLocation();
   const episode = location.state?.episode || null;
+  const podcast = location.state?.podcastInfo || null;
 
   console.log("ep", episode)
 
   return (
     <div >
       Episode
-      {/* {episode && (
-        <PodcastCardDetail podcastInfo={episode} />
-      )} */}
+      {episode && (
+        <PodcastCardDetail podcastInfo={podcast} />
+      )}
 
       {/* {podcast.length > 0 && (
         <div className="episodes">
