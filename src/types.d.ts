@@ -116,3 +116,41 @@ export enum Rel {
 export enum Type {
     TextHTML = "text/html",
 }
+
+// Podcasts details:
+
+interface Genre {
+    name: string;
+    id: string;
+}
+
+interface PodcastDetail {
+    country: string;
+    artworkUrl600: string;
+    feedUrl: string;
+    artworkUrl60: string;
+    artistViewUrl: string;
+    contentAdvisoryRating: string;
+    trackViewUrl: string;
+    closedCaptioning: string;
+    collectionId: number;
+    collectionName: string;
+    description: string;
+    trackId: number;
+    trackName: string;
+    shortDescription: string;
+    releaseDate: string;
+    artistIds: number[];
+    previewUrl: string;
+    episodeUrl: string;
+    episodeContentType: string;
+    collectionViewUrl: string;
+    trackTimeMillis: number;
+    episodeFileExtension: string;
+    artworkUrl160: string;
+    genres: Genre[];
+    episodeGuid: string;
+    kind: string;
+    wrapperType: string;
+}
+  
