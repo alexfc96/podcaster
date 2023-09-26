@@ -1,0 +1,33 @@
+.podcast-details {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 6vh;
+    width: 100%;
+}
+  
+.detail-card {
+    padding: 1em;
+    max-width: 300px;
+    margin-right: 20px;
+}
+
+.card-image {
+    height: 200px;
+}
+.podcast-title {
+    font-weight: bold;
+}
+
+.separator {
+    margin: 0.5rem 0;
+}
+
+.description-label {
+    display: flex;
+    font-weight: bold;
+}
+
+.description {
+    text-align: left;
+}
+  

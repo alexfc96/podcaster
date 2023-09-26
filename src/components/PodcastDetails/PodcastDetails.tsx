@@ -1,9 +1,10 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import './PodcastDetails.css';
 import { useEffect, useState } from 'react';
 import { PodcastDetail } from '../../types';
 import EpisodesTable from '../EpisodesTable/EpisodesTable';
+import PodcastCardDetail from '../PodcastCardDetail/PodcastCardDetail';
 
 const PodcastDetails = () => {
   const [podcast, setPodcast] = useState<PodcastDetail[]>([])
@@ -28,31 +29,7 @@ const PodcastDetails = () => {
   return (
     <div className="podcast-details">
       {podcastInfo && (
-        <Card className="detail-card">
-          <CardMedia
-            component="img"
-            alt="Podcast"
-            height="140"
-            src={podcastInfo['im:image'][2].label}
-            className="card-image"
-            />
-          <hr className="separator" />
-          <CardContent>
-            <Typography variant="h5" component="div" className="podcast-title">
-              {podcastInfo['im:name'].label}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" className="artist">
-              By {podcastInfo['im:artist'].label}
-            </Typography>
-            <hr className="separator" />
-            <Typography variant="body2" color="text.secondary" className="description-label">
-              Description
-            </Typography>
-            <Typography variant="body2" color="text.secondary" className="description">
-              {podcastInfo.summary.label}
-            </Typography>
-          </CardContent>
-        </Card>
+        <PodcastCardDetail podcastInfo={podcastInfo} />
       )}
       {podcast.length > 0 && (
         <div className="episodes">

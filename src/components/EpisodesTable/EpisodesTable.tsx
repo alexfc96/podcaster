@@ -44,7 +44,7 @@ const EpisodesTable = ({ episodes }: Props) => {
                 return (
                     <TableRow key={episode.trackId} style={{ backgroundColor: backgroundColor }}>  
                         <TableCell style={{ padding: 8, maxWidth: 300 }}>
-                            <Link to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`} style={{ color: 'blue' }}>
+                            <Link to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`} state={{ episode }} style={{ color: 'blue' }}>
                                 {episode.trackName}
                             </Link>
                         </TableCell>
