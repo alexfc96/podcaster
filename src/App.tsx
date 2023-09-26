@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import PodcastList from './components/PodcastList/PodcastList'
 import PodcastDetails from './components/PodcastDetails/PodcastDetails'
 import EpisodeDetails from './components/EpisodeDetails/EpisodeDetails'
-import { usePodcastList } from './hooks/usePodcasList'
+import { usePodcastList } from './hooks/usePodcastList'
 
 function App() {
   const { isLoading, podcasts } = usePodcastList(); 
