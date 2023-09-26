@@ -1,17 +1,20 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { usePodcastList } from '../../hooks/usePodcasList';
+
+import PodcastCardDetail from '../PodcastCardDetail/PodcastCardDetail';
+import EpisodesTable from '../EpisodesTable/EpisodesTable';
+
+import { PodcastDetail } from '../../types';
 import { Box } from '@mui/material';
 import './PodcastDetails.css';
-import { useEffect, useState } from 'react';
-import { PodcastDetail } from '../../types';
-import EpisodesTable from '../EpisodesTable/EpisodesTable';
-import PodcastCardDetail from '../PodcastCardDetail/PodcastCardDetail';
 
 const PodcastDetails = () => {
-  const [podcast, setPodcast] = useState<PodcastDetail[]>([])
-
-  const location = useLocation();
-  const podcastInfo = location.state?.podcast || null;
+  const { podcasts } = usePodcastList();
   const { podcastId } = useParams();
+
+  const [podcast, setPodcast] = useState<PodcastDetail[]>([])
+  const podcastInfo = podcasts.find(p => p.id.attributes['im:id'] === podcastId) || null;
 
   useEffect(() =>{
     fetch(`https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`)
