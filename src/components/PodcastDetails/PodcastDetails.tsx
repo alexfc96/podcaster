@@ -28,17 +28,16 @@ const PodcastDetails = () => {
 
   return (
     <div className="podcast-details">
-      {podcastInfo && (
-        <PodcastCardDetail podcastInfo={podcastInfo} />
-      )}
+      <PodcastCardDetail podcastInfo={podcastInfo} />
+      
       {podcast.length > 0 && (
         <div className="episodes">
           <Box
-            style={{display: 'flex'}}
             sx={{
               boxShadow: 7,
               width: '100%',
               p: 1,
+              marginBottom: '1rem',
             }}
           >
             Episodes: {podcast[0].trackCount }

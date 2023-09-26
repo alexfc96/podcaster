@@ -17,7 +17,7 @@ const EpisodeDetails = () => {
       )}
 
       {episode && (
-        <div className="episode-description">
+        <div className="episode-description-card">
           <Box
             sx={{
               boxShadow: 7,
@@ -27,9 +27,15 @@ const EpisodeDetails = () => {
           >
             {episode.trackName}
 
-            <Typography variant="body2" color="text.secondary" className="description">
+            <Typography variant="body2" color="text.secondary" className="episode-description">
               {episode.description}
             </Typography>
+
+            <div className='audio-control'>
+              <audio controls>
+                <source src={episode.episodeUrl} type="audio/mpeg" />
+              </audio>
+            </div>
           </Box>
         </div> 
       )}

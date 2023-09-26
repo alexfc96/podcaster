@@ -4,8 +4,22 @@
     margin-top: 6vh;
     width: 100%;
 }
-  
-.episode-description {
+
+.episode-description-card {
     font-weight: bold;
     width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.episode-description {
+    margin: 2vh;
+}
+
+.audio-control {
+    margin: 0 auto; 
+    text-align: center;
+    padding: 1em;
 }

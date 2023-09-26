@@ -18,8 +18,8 @@ const PodcastCardDetail = ({ podcastInfo }: Props) => {
             src={podcastInfo['im:image'][2].label}
             className="card-image"
             />
-          <hr className="separator" />
           <CardContent>
+            <hr className="separator" />
             <Typography variant="h5" component="div" className="podcast-title">
               {podcastInfo['im:name'].label}
             </Typography>
