@@ -3,6 +3,7 @@ import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import './PodcastDetails.css';
 import { useEffect, useState } from 'react';
 import { PodcastDetail } from '../../types';
+import EpisodesTable from '../EpisodesTable/EpisodesTable';
 
 const PodcastDetails = () => {
   const [podcast, setPodcast] = useState<PodcastDetail[]>([])
@@ -64,6 +65,8 @@ const PodcastDetails = () => {
             >
             Episodes: {podcast[0].trackCount }
           </Box>
+
+          <EpisodesTable episodes={podcast.slice(1)} />
         </div> 
       )}
     </div>
