@@ -10,8 +10,7 @@ const EpisodeDetails = () => {
   console.log("ep", episode)
 
   return (
-    <div >
-      Episode
+    <div className="episode-details">
       {episode && (
         <PodcastCardDetail podcastInfo={podcast} />
       )}
