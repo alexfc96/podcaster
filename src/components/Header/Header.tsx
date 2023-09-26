@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="header">
+    <header className="header-title">
       <Link to={`/`} className="link">
         <Typography variant="h5" className="title">
           Podcaster

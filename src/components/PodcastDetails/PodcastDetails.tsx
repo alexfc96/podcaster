@@ -1,5 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import './PodcastDetails.css';
 import { useEffect, useState } from 'react';
 import { PodcastDetail } from '../../types';
@@ -55,9 +55,15 @@ const PodcastDetails = () => {
       )}
       {podcast.length > 0 && (
         <div className="episode-count">
-          <Typography variant="h5" color="text.secondary">
+          <Box
+                sx={{
+                    boxShadow: 7,
+                    width: '140px',
+                    p: 1,
+                }}
+            >
             Episodes: {podcast[0].trackCount }
-          </Typography>
+          </Box>
         </div> 
       )}
     </div>
