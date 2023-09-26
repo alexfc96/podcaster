@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import './EpisodeDetails.css';
 import PodcastCardDetail from '../PodcastCardDetail/PodcastCardDetail';
+import { Box, Typography } from '@mui/material';
 
 const EpisodeDetails = () => {
   const location = useLocation();
@@ -11,23 +12,12 @@ const EpisodeDetails = () => {
 
   return (
     <div className="episode-details">
-      {episode && (
+      {podcast && (
         <PodcastCardDetail podcastInfo={podcast} />
       )}
 
-      {/* {podcast.length > 0 && (
-        <div className="episodes">
-          <Box
-            style={{display: 'flex'}}
-            sx={{
-              boxShadow: 7,
-              width: '100%',
-              p: 1,
-            }}
-          >
-            Episodes: {podcast[0].trackCount }
-          </Box>
-          
+      {episode && (
+        <div className="episode-description">
           <Box
             sx={{
               boxShadow: 7,
@@ -35,10 +25,14 @@ const EpisodeDetails = () => {
               p: 1,
             }}
           >
-            <EpisodesTable episodes={podcast.slice(1)} />
+            {episode.trackName}
+
+            <Typography variant="body2" color="text.secondary" className="description">
+              {episode.description}
+            </Typography>
           </Box>
         </div> 
-      )} */}
+      )}
     </div>
   );
 };
