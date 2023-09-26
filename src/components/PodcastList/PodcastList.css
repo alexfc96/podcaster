@@ -1,0 +1,5 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four podcasts per row */
+    gap: 16px; /* Space between cards */
+  }
