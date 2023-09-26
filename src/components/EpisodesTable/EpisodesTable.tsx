@@ -31,7 +31,7 @@ const EpisodesTable = ({ episodes }: Props) => {
     return (
         <Table style={{ width: "100%", borderCollapse: "collapse" }}>
         <TableHead>
-            <TableRow style={{ backgroundColor: "#f2f2f2" }}>
+            <TableRow style={{ backgroundColor: "#fff" }}>
             <TableCell style={{ padding: 8 }}>Title</TableCell>
             <TableCell style={{ padding: 8 }}>Date</TableCell>
             <TableCell style={{ padding: 8 }}>Duration</TableCell>
@@ -40,7 +40,7 @@ const EpisodesTable = ({ episodes }: Props) => {
 
         <TableBody>
             {episodes.map((episode, index) => {
-                const backgroundColor = index % 2 === 0 ? `#fff` : `#f2f2f2`;
+                const backgroundColor = index % 2 === 0 ? `#f2f2f2` : `#fff`;
                 return (
                     <TableRow key={episode.trackId} style={{ backgroundColor: backgroundColor }}>  
                         <TableCell style={{ padding: 8, maxWidth: 300 }}>
