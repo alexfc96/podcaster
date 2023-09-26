@@ -40,8 +40,9 @@ const PodcastList = () => {
         <Chip
           label={`${filteredPodcasts.length}`}
           color="primary"
-        />
+        />  
         <TextField
+          style={{marginLeft: '10px'}}
           placeholder='Filter podcast'
           onChange={(e) => {
             setFilterPodcast(e.target.value);
