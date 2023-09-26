@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import './PodcastList.css';
 
 import { Podcast } from '../../types';
-import { TextField } from '@mui/material';
+import { TextField, Chip, Box } from '@mui/material';
 import PodcastCard from '../PodcastCard/PodcastCard';
 
 const PodcastList = () => {
@@ -21,9 +21,9 @@ const PodcastList = () => {
           return titleMatch || artistMatch;
         })
       : podcasts;
-  }, [podcasts, filterPodcast]);
+  }, [podcasts, filterPodcast])
 
-  useEffect(() =>{
+  useEffect(() => {
     fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
       .then(async response => await response.json())
       .then(res => {
@@ -36,13 +36,20 @@ const PodcastList = () => {
 
   return (
     <>
-      <TextField
-        placeholder='Filter podcast'
-        onChange={(e) => {
-          setFilterPodcast(e.target.value);
-        }}
-        sx={{ marginBottom: 2 }}
-      />
+      <Box display="flex" alignItems="center" sx={{ marginBottom: 2 }}>
+        <Chip
+          label={`${filteredPodcasts.length}`}
+          color="primary"
+        />
+        <TextField
+          placeholder='Filter podcast'
+          onChange={(e) => {
+            setFilterPodcast(e.target.value);
+          }}
+        />
+
+      </Box>
+
       <div className="card-container">
         {filteredPodcasts &&
           filteredPodcasts.map((podcast: Podcast) => (
@@ -51,7 +58,6 @@ const PodcastList = () => {
         }
       </div>
     </>
-    
   );
 };
 
