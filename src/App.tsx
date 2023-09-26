@@ -3,6 +3,7 @@ import Header from './components/Header/Header'
 import { Container } from '@mui/material'
 import { Route, Routes } from 'react-router-dom'
 import PodcastList from './components/PodcastList/PodcastList'
+import PodcastDetails from './components/PodcastDetails/PodcastDetails'
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Header />
       <Routes> 
           <Route path ="/" element= {<PodcastList />}/> 
-          {/* <Route path ="/cart" element= {<PodcastInfo />}/>  */}
+          <Route path="/podcast/:podcastId" element={<PodcastDetails />} />
        </Routes> 
     </Container>
   )

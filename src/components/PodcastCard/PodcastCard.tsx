@@ -11,7 +11,7 @@ const PodcastCard = ({ podcast }: Props) => {
   const podcastId = podcast.id.attributes['im:id'];
 
   return (
-    <Link to={`/podcast/${podcastId}`} className="card-link">
+    <Link to={`/podcast/${podcastId}`} state={{ podcast }} className="card-link">
       <Card className="card">
         <CardHeader
           avatar={
