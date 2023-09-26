@@ -23,24 +23,42 @@ const PodcastList = () => {
       : podcasts;
   }, [podcasts, filterPodcast])
 
+  //gestion de estado en la cache? en state no es buena idea
+  //hacer el useEffect cuando no tenemos datos(por si te envian la url dinamica y no hacer todo el proceso)
+  //tema develop y prod que no entiendo
+  //testing con jest
+
   useEffect(() => {
-    fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
-      .then(async response => await response.json())
-      .then(res => {
-        setPodcasts(res.feed.entry)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    const oneDayInMilliseconds = 24 * 60 * 60 * 1000; // 1 day in milliseconds
+    const lastFetchTime = localStorage.getItem('lastFetchTime');
+    const storedData = localStorage.getItem('podcastsData');
+
+    if (storedData) {
+      setPodcasts(JSON.parse(storedData));
+    }
+
+    if (!lastFetchTime || Date.now() - parseInt(lastFetchTime, 10) > oneDayInMilliseconds) {
+      // Only fetch data if it's the first load or it has been more than a day
+      fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
+        .then(async response => await response.json())
+        .then(res => {
+          setPodcasts(res.feed.entry);
+          localStorage.setItem('podcastsData', JSON.stringify(res.feed.entry)); // Save data to localStorage
+          localStorage.setItem('lastFetchTime', Date.now().toString()); // Update the last fetch time in localStorage
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
   }, [])
 
   return (
     <>
       <Box display="flex" alignItems="center" sx={{ marginBottom: 2 }}>
         <Chip
-          label={`${filteredPodcasts.length}`}
-          color="primary"
-        />  
+            label={`${filteredPodcasts.length}`}
+            color="primary"
+          />
         <TextField
           style={{marginLeft: '10px'}}
           placeholder='Filter podcast'
@@ -48,7 +66,6 @@ const PodcastList = () => {
             setFilterPodcast(e.target.value);
           }}
         />
-
       </Box>
 
       <div className="card-container">
