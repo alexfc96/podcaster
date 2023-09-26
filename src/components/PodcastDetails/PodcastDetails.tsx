@@ -58,7 +58,7 @@ const PodcastDetails = () => {
           <Box
                 sx={{
                     boxShadow: 7,
-                    width: '140px',
+                    width: '100%',
                     p: 1,
                 }}
             >

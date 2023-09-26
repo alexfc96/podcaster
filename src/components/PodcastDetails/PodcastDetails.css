@@ -2,6 +2,7 @@
     display: flex;
     justify-content: flex-start;
     margin-top: 6vh;
+    width: 100%;
 }
   
 .detail-card {
@@ -28,5 +29,9 @@
 
 .description {
     text-align: left;
+}
+
+.episode-count {
+    width: 100%;
 }
   

@@ -14,6 +14,7 @@ const PodcastCard = ({ podcast }: Props) => {
     <Link to={`/podcast/${podcastId}`} state={{ podcast }} className="card-link">
       <Card className="card">
         <CardHeader
+          className='avatar-container'
           avatar={
             <Avatar
               alt="Podcast"
