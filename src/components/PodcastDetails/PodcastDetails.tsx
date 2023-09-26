@@ -55,18 +55,27 @@ const PodcastDetails = () => {
         </Card>
       )}
       {podcast.length > 0 && (
-        <div className="episode-count">
+        <div className="episodes">
           <Box
-                sx={{
-                    boxShadow: 7,
-                    width: '100%',
-                    p: 1,
-                }}
-            >
+            style={{display: 'flex'}}
+            sx={{
+              boxShadow: 7,
+              width: '100%',
+              p: 1,
+            }}
+          >
             Episodes: {podcast[0].trackCount }
           </Box>
-
-          <EpisodesTable episodes={podcast.slice(1)} />
+          
+          <Box
+            sx={{
+              boxShadow: 7,
+              width: '100%',
+              p: 1,
+            }}
+          >
+            <EpisodesTable episodes={podcast.slice(1)} />
+          </Box>
         </div> 
       )}
     </div>

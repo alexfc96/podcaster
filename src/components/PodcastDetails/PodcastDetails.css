@@ -31,7 +31,8 @@
     text-align: left;
 }
 
-.episode-count {
+.episodes {
+    font-weight: bold;
     width: 100%;
 }
   
