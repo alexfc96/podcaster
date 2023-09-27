@@ -1,14 +1,21 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import './EpisodeDetails.css';
 import PodcastCardDetail from '../PodcastCardDetail/PodcastCardDetail';
 import { Box, Typography } from '@mui/material';
+import { Podcast, PodcastDetail } from '../../types';
 
-const EpisodeDetails = () => {
+interface Props {
+  podcasts: Podcast[];
+}
+
+const EpisodeDetails = ({podcasts}: Props) => {
   const location = useLocation();
   const episode = location.state?.episode || null;
-  const podcast = location.state?.podcastInfo || null;
+  
+  const { podcastId } = useParams();
+  const podcast = podcasts.find(p => p.id.attributes['im:id'] === podcastId) || null;
 
-  console.log("ep", episode)
+  // console.log("ep", episode)
 
   return (
     <div className="episode-details">

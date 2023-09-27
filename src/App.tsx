@@ -7,7 +7,7 @@ import EpisodeDetails from './components/EpisodeDetails/EpisodeDetails'
 import { usePodcastList } from './hooks/usePodcastList'
 
 function App() {
-  const { isLoading, podcasts } = usePodcastList(); 
+  const { isLoadingPodcasts, podcasts } = usePodcastList();
 
   return (
     <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PodcastList podcasts={podcasts} />} />
         <Route path="/podcast/:podcastId" element={<PodcastDetails podcasts={podcasts} />} />
-        <Route path="/podcast/:podcastId/episode/:episodeId" element={<EpisodeDetails />} />
+        <Route path="/podcast/:podcastId/episode/:episodeId" element={<EpisodeDetails podcasts={podcasts} />} />
       </Routes>
     </Container>
   )

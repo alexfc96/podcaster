@@ -3,19 +3,19 @@ import { Podcast } from "../types";
 
 interface usePodcastListState {
   podcasts: Podcast[];
-  isLoading: boolean;
+  isLoadingPodcasts: boolean;
 }
 
 const initialState: usePodcastListState = {
   podcasts: [],
-  isLoading: false,
+  isLoadingPodcasts: false,
 };
 
 export function usePodcastList() {
   const [state, setState] = useState<usePodcastListState>(initialState);
 
   const getData = () => {
-    setState({ ...state, isLoading: true });
+    setState({ ...state, isLoadingPodcasts: true });
 
     // Check if podcast are on cache
     const cachedData = localStorage.getItem("podcastData");
@@ -29,7 +29,7 @@ export function usePodcastList() {
       if (currentTime - cacheTime <= cacheExpirationTime) {
         // The data on cache are valid
         const parsedData = JSON.parse(cachedData);
-        setState({ podcasts: parsedData, isLoading: false });
+        setState({ podcasts: parsedData, isLoadingPodcasts: false });
         return;
       }
     }
@@ -44,11 +44,11 @@ export function usePodcastList() {
         localStorage.setItem("podcastData", JSON.stringify(podcastData));
         localStorage.setItem("podcastTimestamp", String(new Date().getTime()));
         
-        setState({ podcasts: podcastData, isLoading: false });
+        setState({ podcasts: podcastData, isLoadingPodcasts: false });
       })
       .catch((error) => {
         console.log(error);
-        setState({ ...state, isLoading: false }); // Catch errors and pass isLoading to false
+        setState({ ...state, isLoadingPodcasts: false }); // Catch errors and pass isLoadingPodcasts to false
       });
   };
 

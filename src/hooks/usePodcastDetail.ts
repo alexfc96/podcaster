@@ -3,12 +3,12 @@ import { PodcastDetail } from "../types";
 
 interface usePodcastDetailState {
   podcastDetail: PodcastDetail[] | null;
-  isLoading: boolean;
+  isLoadingPodcastDetails: boolean;
 }
 
 const initialState: usePodcastDetailState = {
   podcastDetail: null,
-  isLoading: false,
+  isLoadingPodcastDetails: false,
 };
 
 export function usePodcastDetail(podcastId?: string) {
@@ -45,12 +45,12 @@ export function usePodcastDetail(podcastId?: string) {
   };
 
   const getData = () => {
-    setState({ ...state, isLoading: true });
+    setState({ ...state, isLoadingPodcastDetails: true });
   
     // Try to get podcast details from cache first
     const cachedPodcastDetail = getPodcastDetailFromCache();
     if (cachedPodcastDetail) {
-        setState({ podcastDetail: cachedPodcastDetail, isLoading: false });
+        setState({ podcastDetail: cachedPodcastDetail, isLoadingPodcastDetails: false });
         return;
     }
     
@@ -68,15 +68,16 @@ export function usePodcastDetail(podcastId?: string) {
         savePodcastDetailToCache(podcastDetailObject);
         
         // Set state to show the podcastDetail in the final component
-        setState({ podcastDetail: podcastDetails, isLoading: false });
+        setState({ podcastDetail: podcastDetails, isLoadingPodcastDetails: false });
       })
       .catch((error) => {
         console.log(error);
-        setState({ ...state, isLoading: false });
+        setState({ ...state, isLoadingPodcastDetails: false });
       });
   };
 
   useEffect(() => {
+    console.log("usePodcastDetail", podcastId)
     if (podcastId) {
       getData();
     }
