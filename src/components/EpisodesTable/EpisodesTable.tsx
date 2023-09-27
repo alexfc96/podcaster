@@ -1,13 +1,12 @@
 import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
-import { Podcast, PodcastDetail } from "../../types";
+import { PodcastDetail } from "../../types";
 import { Link } from "react-router-dom";
 
 interface Props {
   episodes: PodcastDetail[];
-  podcastInfo: Podcast;
 }
 
-const EpisodesTable = ({ episodes, podcastInfo }: Props) => {
+const EpisodesTable = ({ episodes }: Props) => {
     function formatDate(originalDate: string) {
         const date = new Date(originalDate);
         const day = date.getDate().toString().padStart(2, "0");
@@ -18,15 +17,16 @@ const EpisodesTable = ({ episodes, podcastInfo }: Props) => {
     }
 
     function formatMinutes(time: number) {
+        if(!time) return 'Unspecified time'
         const minutes = Math.floor(time / 60000);
         const seconds = ((time % 60000) / 1000).toFixed(0);
 
         if(minutes >= 60) {
             const hours = Math.floor(minutes / 60);
             const leftMinutes = minutes % 60;
-            return `${hours}h:${leftMinutes}`;
+            return `${hours}h:${leftMinutes} minutes`;
         }
-        return `${minutes}:${seconds.padStart(2, '0')}`;
+        return `${minutes}:${seconds.padStart(2, '0')} minutes`;
     }
 
     return (
@@ -50,7 +50,7 @@ const EpisodesTable = ({ episodes, podcastInfo }: Props) => {
                             </Link>
                         </TableCell>
                         <TableCell style={{ padding: 8 }}>{formatDate(episode.releaseDate)}</TableCell>
-                        <TableCell style={{ padding: 8 }}>{formatMinutes(episode.trackTimeMillis)} minutes</TableCell>
+                        <TableCell style={{ padding: 8 }}>{formatMinutes(episode.trackTimeMillis)}</TableCell>
                     </TableRow>
                 )}
             )}
