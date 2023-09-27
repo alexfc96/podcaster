@@ -47,7 +47,7 @@ export function usePodcastList() {
       .then((res) => {
         const podcastData = res.feed.entry;
         
-        // Almacena los datos en caché
+        // Save the data on cache client
         localStorage.setItem("podcastData", JSON.stringify(podcastData));
         localStorage.setItem("podcastTimestamp", String(new Date().getTime()));
         
