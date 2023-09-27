@@ -17,7 +17,6 @@ const PodcastCardDetail = ({ podcastInfo }: Props) => {
             <CardMedia
               component="img"
               alt="Podcast"
-              height="140"
               src={podcastInfo['im:image'][2].label}
               className="card-image" />
           </Link>

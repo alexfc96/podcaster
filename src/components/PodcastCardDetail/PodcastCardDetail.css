@@ -5,7 +5,7 @@
 }
 
 .card-image {
-    height: 200px;
+    height: auto;
 }
 .podcast-title {
     font-weight: bold;

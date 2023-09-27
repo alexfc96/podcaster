@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
+import { usePodcastDetail } from '../../hooks/usePodcastDetail';
 
 import PodcastCardDetail from '../PodcastCardDetail/PodcastCardDetail';
 import EpisodesTable from '../EpisodesTable/EpisodesTable';
 
+import { Podcast } from '../../types';
 import { Box } from '@mui/material';
 import './PodcastDetails.css';
-import { usePodcastDetail } from '../../hooks/usePodcastDetail';
-import { Podcast } from '../../types';
 
 interface Props {
   podcasts: Podcast[];
@@ -45,7 +45,7 @@ const PodcastDetails = ({podcasts}: Props) => {
                 p: 1,
               }}
             >
-              <EpisodesTable episodes={podcastDetail.slice(1)} podcastInfo={podcastInfo} />
+              <EpisodesTable episodes={podcastDetail.slice(1)} />
             </Box>
           }
         </div> 
