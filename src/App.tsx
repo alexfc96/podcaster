@@ -14,7 +14,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<PodcastList podcasts={podcasts} />} />
-        <Route path="/podcast/:podcastId" element={<PodcastDetails />} />
+        <Route path="/podcast/:podcastId" element={<PodcastDetails podcasts={podcasts} />} />
         <Route path="/podcast/:podcastId/episode/:episodeId" element={<EpisodeDetails />} />
       </Routes>
     </Container>

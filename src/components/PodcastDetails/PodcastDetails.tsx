@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { usePodcastList } from '../../hooks/usePodcastList';
 
 import PodcastCardDetail from '../PodcastCardDetail/PodcastCardDetail';
 import EpisodesTable from '../EpisodesTable/EpisodesTable';
@@ -7,13 +6,16 @@ import EpisodesTable from '../EpisodesTable/EpisodesTable';
 import { Box } from '@mui/material';
 import './PodcastDetails.css';
 import { usePodcastDetail } from '../../hooks/usePodcastDetail';
+import { Podcast } from '../../types';
 
-const PodcastDetails = () => {
+interface Props {
+  podcasts: Podcast[];
+}
+
+const PodcastDetails = ({podcasts}: Props) => {
   const { podcastId } = useParams();
-  
-  const { podcasts } = usePodcastList();
   const { podcastDetail} = usePodcastDetail(podcastId);
-
+  
   const podcastInfo = podcasts.find(p => p.id.attributes['im:id'] === podcastId) || null;
 
   return (
