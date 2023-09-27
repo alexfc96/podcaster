@@ -11,10 +11,14 @@ const initialState: usePodcastListState = {
   isLoadingPodcasts: false,
 };
 
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export function usePodcastList() {
   const [state, setState] = useState<usePodcastListState>(initialState);
 
-  const getData = () => {
+  const getData = async () => {
     setState({ ...state, isLoadingPodcasts: true });
 
     // Check if podcast are on cache
@@ -33,6 +37,9 @@ export function usePodcastList() {
         return;
       }
     }
+
+    // Added a delay of 1 second to show the spinner on the Header component
+    await sleep(1000);
 
     // If the data is not cached, then we called the API
     fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')

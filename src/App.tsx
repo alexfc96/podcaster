@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-      <Header />
+      <Header isLoading={isLoadingPodcasts} />
       <Routes>
         <Route path="/" element={<PodcastList podcasts={podcasts} />} />
         <Route path="/podcast/:podcastId" element={<PodcastDetails podcasts={podcasts} />} />
