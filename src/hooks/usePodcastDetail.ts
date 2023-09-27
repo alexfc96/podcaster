@@ -77,7 +77,6 @@ export function usePodcastDetail(podcastId?: string) {
   };
 
   useEffect(() => {
-    console.log("usePodcastDetail", podcastId)
     if (podcastId) {
       getData();
     }

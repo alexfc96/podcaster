@@ -1,4 +1,4 @@
-import { Avatar, Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
+import { Avatar, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { Podcast } from '../../types';
 import { Link } from 'react-router-dom';
 import './PodcastCard.css';
