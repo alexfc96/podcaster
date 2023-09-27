@@ -27,13 +27,6 @@ const PodcastCard = ({ podcast }: Props) => {
             />
           }
         />
-        <div className="media-container">
-          <CardMedia
-            className="media"
-            image={podcast['im:image'][0].label}
-            title="Podcast"
-          />
-        </div>
         <CardContent className="content">
           <Typography variant="h5" component="div">
             {podcast['im:name'].label}
