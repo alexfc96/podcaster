@@ -11,10 +11,6 @@ const initialState: usePodcastListState = {
   isLoadingPodcasts: false,
 };
 
-function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 export function usePodcastList() {
   const [state, setState] = useState<usePodcastListState>(initialState);
 
@@ -38,25 +34,25 @@ export function usePodcastList() {
       }
     }
 
-    // Added a delay of 1 second to show the spinner on the Header component
-    await sleep(1000);
-
-    // If the data is not cached, then we called the API
-    fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
-      .then(async (response) => await response.json())
-      .then((res) => {
-        const podcastData = res.feed.entry;
-        
-        // Save the data on cache client
-        localStorage.setItem("podcastData", JSON.stringify(podcastData));
-        localStorage.setItem("podcastTimestamp", String(new Date().getTime()));
-        
-        setState({ podcasts: podcastData, isLoadingPodcasts: false });
-      })
-      .catch((error) => {
-        console.log(error);
-        setState({ ...state, isLoadingPodcasts: false }); // Catch errors and pass isLoadingPodcasts to false
-      });
+    // Added a delay of 2 second to show the spinner on the Header component
+    setTimeout(() => {
+      // If the data is not cached, then we called the API
+      fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
+        .then(async (response) => await response.json())
+        .then((res) => {
+          const podcastData = res.feed.entry;
+          
+          // Save the data on cache client
+          localStorage.setItem("podcastData", JSON.stringify(podcastData));
+          localStorage.setItem("podcastTimestamp", String(new Date().getTime()));
+          
+          setState({ podcasts: podcastData, isLoadingPodcasts: false });
+        })
+        .catch((error) => {
+          console.log(error);
+          setState({ ...state, isLoadingPodcasts: false }); // Catch errors and pass isLoadingPodcasts to false
+        });
+      }, 2000);
   };
 
   useEffect(() => {
