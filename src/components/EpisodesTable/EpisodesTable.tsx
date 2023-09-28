@@ -1,33 +1,13 @@
 import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 import { PodcastDetail } from "../../types";
 import { Link } from "react-router-dom";
+import { formatDate, formatMinutes } from "../../services/dateFormatter";
 
 interface Props {
   episodes: PodcastDetail[];
 }
 
 const EpisodesTable = ({ episodes }: Props) => {
-    function formatDate(originalDate: string) {
-        const date = new Date(originalDate);
-        const day = date.getDate().toString().padStart(2, "0");
-        const month = (date.getMonth() + 1).toString().padStart(2, "0");
-        const year = date.getFullYear();
-      
-        return `${day}/${month}/${year}`;
-    }
-
-    function formatMinutes(time: number) {
-        if(!time) return 'Unspecified time'
-        const minutes = Math.floor(time / 60000);
-        const seconds = ((time % 60000) / 1000).toFixed(0);
-
-        if(minutes >= 60) {
-            const hours = Math.floor(minutes / 60);
-            const leftMinutes = minutes % 60;
-            return `${hours}h:${leftMinutes} minutes`;
-        }
-        return `${minutes}:${seconds.padStart(2, '0')} minutes`;
-    }
 
     return (
         <Table style={{ width: "100%", borderCollapse: "collapse" }}>
