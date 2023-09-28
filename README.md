@@ -33,7 +33,7 @@ To deploy the application in your local environment, follow these steps:
 
 4. Click on an episode to see more details and listen to it directly on the application.
 
-## Additional Features
+## Additional Features for the future
 
 - **Responsive Design**: Ensure that the application is fully responsive on different devices and screen sizes.
 
