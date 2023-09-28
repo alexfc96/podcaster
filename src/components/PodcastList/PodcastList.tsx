@@ -28,19 +28,21 @@ const PodcastList = ({podcasts}: Props) => {
 
   return (
     <>
-      <Box display="flex" alignItems="center" sx={{ marginBottom: 2 }}>
-        <Chip
-            label={`${filteredPodcasts.length}`}
-            color="primary"
+      {podcasts.length > 0 && 
+        <Box display="flex" alignItems="center" sx={{ marginBottom: 2 }}>
+          <Chip
+              label={`${filteredPodcasts.length}`}
+              color="primary"
+            />
+          <TextField
+            style={{marginLeft: '10px'}}
+            placeholder='Filter podcast'
+            onChange={(e) => {
+              setFilterPodcast(e.target.value);
+            }}
           />
-        <TextField
-          style={{marginLeft: '10px'}}
-          placeholder='Filter podcast'
-          onChange={(e) => {
-            setFilterPodcast(e.target.value);
-          }}
-        />
-      </Box>
+        </Box>
+      }
 
       <div className="card-container">
         {filteredPodcasts &&
