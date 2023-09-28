@@ -2,7 +2,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import './EpisodeDetails.css';
 import PodcastCardDetail from '../PodcastCardDetail/PodcastCardDetail';
 import { Box, Typography } from '@mui/material';
-import { Podcast, PodcastDetail } from '../../types';
+import { Podcast } from '../../types';
 
 interface Props {
   podcasts: Podcast[];
@@ -14,8 +14,6 @@ const EpisodeDetails = ({podcasts}: Props) => {
   
   const { podcastId } = useParams();
   const podcast = podcasts.find(p => p.id.attributes['im:id'] === podcastId) || null;
-
-  // console.log("ep", episode)
 
   return (
     <div className="episode-details">
